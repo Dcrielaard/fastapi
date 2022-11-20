@@ -16,7 +16,7 @@ curl --request POST \
 Documentation of the code can be found at:
 http://127.0.0.1:8000/docs
 
-### Scalability
+#### Scalability
 Calls made to the API are syncronous. It may be helpful to send the requests a-syncronuous using asyncio.
 This can be tested using boom
 

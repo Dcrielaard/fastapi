@@ -5,6 +5,7 @@ from pydantic import BaseModel, validator
 
 app = FastAPI()
 
+
 class Item(BaseModel):
     name: str
     price: float
@@ -15,9 +16,11 @@ class Item(BaseModel):
             raise ValueError(f"We except price >0, we received {value}")
         return value
 
+
 @app.get("/")
 async def root():
     return {"message": "hello world"}
+
 
 @app.get("/users/{user_id}")
 def read_user(user_id: int):
@@ -26,17 +29,19 @@ def read_user(user_id: int):
     """
     return {"user_id": user_id}
 
+
 @app.post("/items/")
 def create_item(item: Item):
     return item
+
 
 @app.get("/sleep_slow")
 def sleep_slow():
     r = time.sleep(1)
     return {"status": "done"}
 
+
 @app.get("/sleep_fast")
 async def sleep_fast():
     r = await asyncio.sleep(1)
     return {"status": "done"}
-
